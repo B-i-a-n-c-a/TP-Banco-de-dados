@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='inicial_form.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='casa_imob.png') }}" type="image/x-icon">
+    <title>Imobiliária ForElse</title>
+</head>
+<body>
+    <header>
+        <img src="{{ url_for('static', filename='casa_imob.png') }}" alt="Logo Imobiliária ForElse" id="logo">
+        <h2>Sistema de cadastro da Imobiliária ForElse</h2>
+    </header>
+
+    <div class="alert" id="mensagem-erro">
+        <span class="alerta_erro" onclick="fecharAlerta()">&times;</span>
+        <p>{{ erros }}</p>
+    </div>
+
+    <div id="buttons-container"> 
+    <button id="link" onclick="cadastra('/cadastro_cliente')">Cadastrar Cliente</button>
+    <button id="link" onclick="cadastra('/cadastro_imovel')">Cadastrar Imóvel</button>
+    <button id="link" onclick="cadastra('/imprime_imovel')">Imóveis cadastrados</button>
+    <button id="link" onclick="cadastra('/imprime_cliente')">Clientes cadastrados</button>
+    <button id="link" onclick="cadastra('/exclui_imovel')">Excluir imovel</button>
+    <button id="link" onclick="cadastra('/exclui_cliente')">Excluir cliente</button>
+    <button id="link" onclick="cadastra('/update')">Update imovel ou cliente</button>
+    </div>
+
+    <script>
+        function cadastra(rota) {
+            fetch(rota)  
+                .then(response => {
+                    window.location.href = response.url;
+                })
+                .catch(error => {
+                    console.error('Erro:', error);
+                });
+        }
+        </script>
+
+    <footer>
+        Para mais informações, entre em contato:<br>
+        Número: (11) 1234-5678<br>
+        Email: contato@imobiliariaforelse.com
+    </footer>
+
+</body>
+</html>
