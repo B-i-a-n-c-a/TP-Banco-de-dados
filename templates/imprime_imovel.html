@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='imovel.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='casa_imob.png') }}" type="image/x-icon">
+    <title>Imobiliária ForElse</title>
+</head>
+
+<body>
+    <header>
+        <img src="{{ url_for('static', filename='casa_imob.png') }}" alt="Logo Imobiliária ForElse" id="logo">
+        <h1>Imoveis cadastrados</h1>
+    </header>
+    <table>
+        <thead>
+            <tr>
+                    <th>Endereço</th>
+                    <th>
+                        <form action="/ordena" method="post">
+                            <input type="hidden" name="atributo" value="area_total">
+                            <input type="hidden" name="tabela" value="imovel">
+                            <button type="submit">Área total (m²)</button>
+                        </form>
+                    </th>
+                    <th>Número de Cômodos</th>
+                    <th>
+                        <form action="/ordena" method="post">
+                            <input type="hidden" name="atributo" value="preco">
+                            <input type="hidden" name="tabela" value="imovel">
+                            <button type="submit">Preço</button>
+                        </form>
+                    </th>
+                    <th>Status</th>
+                    <th>Imagens</th>
+            </tr>
+        </thead>
+
+        {% for imovel in imovel_completo %}
+            <tr>
+                    <td><strong>Número:</strong> {{ imovel[1] }}, <strong>Bairro:</strong> {{ imovel[2]|title }}<strong>Cidade - Estado:</strong> {{ imovel[3]|title }} - {{ imovel[4]|title }}, <strong>CEP:</strong> {{ imovel[5]}}</td>
+                    <td>{{ imovel[6] }} m²</td>
+                    <td>{{ imovel[7] }}</td>
+                    <td><strong>R$</strong> {{ imovel[8] }}</td>
+                    <td>{{ imovel[9] }}</td>
+            
+                <td>
+                    {% for imagem in imovel.imagem %}
+                        <div class="imagem-container">
+                            <img src="data:image/png;base64,{{ imovel[10] }}" alt="Imagem do imóvel" class="imagem">
+                        </div>
+                    {% endfor %}
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <footer>
+        Para mais informações, entre em contato:<br>
+        Número: (11) 1234-5678<br>
+        Email: contato@imobiliariaforelse.com
+    </footer>
+
+</body>
+</html>
