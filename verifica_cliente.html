@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='inicial_form.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='casa_imob.png') }}" type="image/x-icon">
+    <title>Imobiliária ForElse - Atualização Cliente</title>
+</head>
+
+<body>
+    <header>
+        <img src="{{ url_for('static', filename='casa_imob.png') }}" alt="Logo Imobiliária ForElse" id="logo">
+        <h1>Atualização de Clientes</h1>
+    </header>
+
+    
+    <form action="/verifica_cliente" method="post">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" required>
+        
+        <label for="rg">RG:</label>
+        <input type="text" id="rg" name="rg">
+        
+        <label for="telefone">Telefone:</label>
+        <input type="text" id="telefone" name="telefone">
+        
+        <label for="banco">Banco:</label>
+        <input type="text" id="banco" name="banco">
+        
+        <label for="agencia">Agência:</label>
+        <input type="text" id="agencia" name="agencia">
+        
+        <label for="numero_conta">Número de Conta:</label>
+        <input type="text" id="numero_conta" name="numero_conta">
+        
+        <label for="tipo_conta">Tipo de Conta:</label>
+        <input type="text" id="tipo_conta" name="tipo_conta">
+        
+        <input type="submit" value="Atualizar cliente" id="link"> 
+    </form>
+    
+    <div class="alert" id="mensagem-erro">
+        <span class="alerta_erro" onclick="fecharAlerta()">&times;</span>
+        <p>{{ erros }}</p>
+    </div>
+    
+    <script>
+        function fecharAlerta() {
+            document.getElementById("mensagem-erro").style.display = "none";
+        }
+    </script>
+
+    <footer>
+        Para mais informações, entre em contato:<br>
+        Número: (11) 1234-5678<br>
+        Email: contato@imobiliariaforelse.com
+    </footer>
+</body>
+</html>
