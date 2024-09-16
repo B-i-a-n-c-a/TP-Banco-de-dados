@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='inicial_form.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='casa_imob.png') }}" type="image/x-icon">
+    <title>Imobiliária ForElse</title>
+</head>
+<body>
+    <header>
+        <img src="{{ url_for('static', filename='casa_imob.png') }}" alt="Logo Imobiliária ForElse" id="logo">
+        <h1>Update de dados da Imobiliária ForElse</h1>
+    </header>
+
+    <form action="/verifica_dado" method="post">
+        <label for="dado">Informe o cep ou cpf que deseja atualizar:</label>
+        <input type="text" id="dado" name="dado" required>
+        <input type="submit" value="Buscar" id="botao"> 
+    </form>
+
+    <div class="alert" id="mensagem-erro">
+        <span class="alerta_erro" onclick="fecharAlerta()">&times;</span>
+        <p>{{ erros }}</p>
+    </div>
+    
+    <script>
+        function fecharAlerta() {
+            document.getElementById("mensagem-erro").style.display = "none";
+        }
+    </script>
+
+
+    <footer>
+        Para mais informações, entre em contato:<br>
+        Número: (11) 1234-5678<br>
+        Email: contato@imobiliariaforelse.com
+    </footer>
+</body>
+</html>
