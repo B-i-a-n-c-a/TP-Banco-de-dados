@@ -1,0 +1,40 @@
+<!-- login.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='inicial_form.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='casa_imob.png') }}" type="image/x-icon">
+    <title>Imobiliária ForElse - Login</title>
+</head>
+<body>
+    <header>
+        <img src="{{ url_for('static', filename='casa_imob.png') }}" alt="Logo Imobiliária ForElse" id="logo">
+        <h1>Informe seus dados de cadastro, por favor.</h1>
+    </header>
+    
+    <div class="alert" id="mensagem-erro">
+        <span class="alerta_erro" onclick="fecharAlerta()">&times;</span>
+        <p>{{ erros }}</p>
+    </div>
+
+    <div id="buttons-container">
+        
+        <form action="/verifica_login" method="post">
+            <label for="login">Login:</label>
+            <input type="text" id="login" name="login" required>
+
+            <label for="senha">Senha:</label>
+            <input type="password" id="senha" name="senha" required>
+
+            <input type="submit" value="Confirmar" id="botao"> 
+        </form>
+    </div>
+    <footer>
+        Para mais informações, entre em contato:<br>
+        Número: (11) 1234-5678<br>
+        Email: contato@imobiliariaforelse.com
+    </footer>
+</body>
+</html>
