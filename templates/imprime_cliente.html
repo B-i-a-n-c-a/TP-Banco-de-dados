@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='imovel.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='casa_imob.png') }}" type="image/x-icon">
+    <title>Imobiliária ForElse</title>
+</head>
+
+<body>
+    <header>
+        <img src="{{ url_for('static', filename='casa_imob.png') }}" alt="Logo Imobiliária ForElse" id="logo">
+        <h1>Clientes cadastrados</h1>
+    </header>
+
+    <table>
+        <tr>
+            <th>
+                <form action="/ordena" method="post">
+                    <input type="hidden" name="atributo" value="nome">
+                    <input type="hidden" name="tabela" value="cliente">
+                    <button type="submit">Nome</button>
+                </form>
+            </th>
+            <th>
+                <form action="/ordena" method="post">
+                    <input type="hidden" name="atributo" value="idade">
+                    <input type="hidden" name="tabela" value="cliente">
+                    <button type="submit">Idade</button>
+                </form>
+            </th>
+            <th>CPF</th>
+            <th>RG</th>
+            <th>Telefone</th>
+            <th>Banco</th>
+        </tr>
+        {% for cliente in dados %}
+            <tr>
+                <td>{{ cliente[0]|title }}</td>
+                <td>{{ cliente[1] }}</td>
+                <td>{{ "{0}.{1}.{2}-{3}".format(cliente[2][:3], cliente[2][3:6], cliente[2][6:9], cliente[2][9:]) }}</td>
+                <td>MG-{{ "{0}.{1}.{2}".format(cliente[3][:2], cliente[3][2:5], cliente[2][5:]) }}</td>
+                <td>{{"({0}){1}-{2}".format(cliente[4][:2], cliente[4][2:7], cliente[4][7:]) }}</td>
+                <td>{{ cliente[5] }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <footer>
+        Para mais informações, entre em contato:<br>
+        Número: (11) 1234-5678<br>
+        Email: contato@imobiliariaforelse.com
+    </footer>
+
+</body>
+</html>
