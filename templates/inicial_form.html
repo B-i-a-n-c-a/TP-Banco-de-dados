@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='inicial_form.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='casa_imob.png') }}" type="image/x-icon">
+    <title>Imobiliária ForElse</title>
+</head>
+<body>
+    <header>
+        <img src="{{ url_for('static', filename='casa_imob.png') }}" alt="Logo Imobiliária ForElse" id="logo">
+        <h1>Olá, seja bem-vindo ao sistema de cadastro da Imobiliária ForElse</h1>
+    </header>
+
+    <div id="buttons-container">
+
+        <button id="link" onclick="cadastra('/cadastro_funcionario')">Cadastre-se</button>
+        <button id="link" onclick="cadastra('/login')">Login</button>
+
+    </div>
+
+    <script>
+        function cadastra(rota) {
+            fetch(rota)  
+                .then(response => {
+                    window.location.href = response.url;
+                })
+                .catch(error => {
+                    console.error('Erro:', error);
+                });
+        }
+        </script>
+    <footer>
+        Para mais informações, entre em contato:<br>
+        Número: (11) 1234-5678<br>
+        Email: contato@imobiliariaforelse.com
+    </footer>
+
+</body>
+</html>
