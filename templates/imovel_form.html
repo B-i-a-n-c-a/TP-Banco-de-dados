@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='inicial_form.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='casa_imob.png') }}" type="image/x-icon">
+    <title>Imobiliária ForElse</title>
+</head>
+
+<body>
+    <header>
+        <img src="{{ url_for('static', filename='casa_imob.png') }}" alt="Logo Imobiliária ForElse" id="logo">
+        <h1>Cadastro de imóveis da Imobiliária ForElse</h1>
+    </header>
+
+    
+    <form action="/cadastraI" method="post" enctype="multipart/form-data">
+        <label for="end_numero">Número do Imóvel:</label>
+        <input type="text" id="end_numero" name="end_numero" required>
+        
+        <label for="end_bairro">Bairro:</label>
+        <input type="text" id="end_bairro" name="end_bairro" required>
+        
+        <label for="end_cidade">Cidade:</label>
+        <input type="text" id="end_cidade" name="end_cidade" required>
+        
+        <label for="end_estado">Estado:</label>
+        <input type="text" id="end_estado" name="end_estado" required>
+        
+        <label for="end_cep">CEP:</label>
+        <input type="text" id="end_cep" name="end_cep" required>
+        
+        <label for="area_total">Área Total do Imóvel (m²):</label>
+        <input type="text" id="area_total" name="area_total" required>
+        
+        <label for="qtd_comodo">Quantidade de Cômodos:</label>
+        <input type="number" id="qtd_comodo" name="qtd_comodo" required>
+        
+        <label for="preco">Preço:</label>
+        <input type="text" id="preco" name="preco" required>
+        
+        <label for="status">Status:</label>
+        <select id="status" name="status" required>
+            <option value="disponivel para venda">Disponível para venda</option>
+            <option value="disponivel para aluguel">Disponível para aluguel</option>
+        </select>
+            <label for="imagem">Imagem:</label>
+            <input type="file" id="imagem" name="imagem" multiple><br>
+        <input type="submit" value="Cadastrar imovel" id="link"> 
+    </form>
+    
+    <div class="alert" id="mensagem-erro">
+        <span class="alerta_erro" onclick="fecharAlerta()">&times;</span>
+        <p>{{ erros }}</p>
+    </div>
+    
+    <script>
+        function fecharAlerta() {
+            document.getElementById("mensagem-erro").style.display = "none";
+        }
+    </script>
+
+<!-- <footer>
+    Para mais informações, entre em contato:<br>
+        Número: (11) 1234-5678<br>
+        Email: contato@imobiliariaforelse.com
+    </footer>
+-->
+</body>
+</html>
